@@ -86,7 +86,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
    "https://elevenlabsbackend.onrender.com",
-   "https://elevenlabs-six.vercel.app/"
+   "https://elevenlabs-six.vercel.app",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = DEBUG
