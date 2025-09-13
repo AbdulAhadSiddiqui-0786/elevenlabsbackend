@@ -26,13 +26,13 @@ def seed_audio_data():
             'code': 'en',
             'name': 'English',
             'flag_code': 'US',
-            'audio_url': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+            'audio_url': 'https://rawcdn.githack.com/AbdulAhadSiddiqui-0786/my-audio-files/82981bc6b62423f50cd7e049b37f39506f583e86/Peaches%20-%20City%20Sessions%20(1).mp3',
         },
         {
             'code': 'ar',
             'name': 'Arabic',
             'flag_code': 'SA',
-            'audio_url': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+            'audio_url': 'https://rawcdn.githack.com/AbdulAhadSiddiqui-0786/my-audio-files/22852b39c69e407b9e231eabd3af5498b3348d67/Humood%20-%20Kun%20Anta%20(Lyrics%20Video)%20-%20Music%20Everyday.mp3',
         }
     ]
     
