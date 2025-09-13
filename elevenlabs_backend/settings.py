@@ -6,9 +6,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key-for-dev')
 
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app', '.netlify.app']
+# ALLOWED_HOSTS - Add your Render domain and frontend domain
+ALLOWED_HOSTS = [
+    'elevenlabsbackend.onrender.com',  # Your Render backend domain
+    'elevenlabs-six.vercel.app',       # Your Vercel frontend domain
+    'localhost',
+    '127.0.0.1',
+]
+
+# CORS settings - Allow your frontend to access the API
+CORS_ALLOWED_ORIGINS = [
+    "https://elevenlabs-six.vercel.app",  # NO trailing slash!
+    "http://localhost:3000",
+]
+
+# Optional: If you want to allow all origins during development
+# CORS_ALLOW_ALL_ORIGINS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,7 +38,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Should be at the top
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'elevenlabs_backend.wsgi.application'
 
-# Use SQLite for Django's internal database (auth, sessions, etc.)
+# Use SQLite for Django's internal database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -61,11 +76,9 @@ DATABASES = {
     }
 }
 
-# MongoDB configuration (we'll use this in our custom utilities)
-MONGODB_CONFIG = {
-    'URI': config('MONGODB_URI', default='mongodb://localhost:27017/'),
-    'NAME': config('MONGODB_NAME', default='elevenlabs'),
-}
+# MongoDB configuration for your app data
+MONGODB_URI = config('MONGODB_URI', default='mongodb://localhost:27017/')
+MONGODB_NAME = config('MONGODB_NAME', default='elevenlabs')
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -81,12 +94,3 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ]
 }
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-   "https://elevenlabsbackend.onrender.com",
-   "https://elevenlabs-six.vercel.app",
-]
-
-CORS_ALLOW_ALL_ORIGINS = DEBUG
